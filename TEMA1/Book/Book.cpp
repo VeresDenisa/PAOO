@@ -103,8 +103,12 @@ void Book::setAvailable(bool available){
 
 
 void Book::display(){
-    cout<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
-    if(available) cout<<" -- AVAILABLE";
-    else cout<<" -- UNAVAILABLE";
-    cout<<endl;
+    if(author != nullptr){
+        cout<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
+        if(available) cout<<" -- AVAILABLE";
+        else cout<<" -- UNAVAILABLE";
+        cout<<endl;
+    } else {
+        cout<<"UNKNOWN BOOK"<<endl;
+    }   
 }

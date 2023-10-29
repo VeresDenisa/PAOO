@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-int main()
+int main(int argc, char* argv[])
 {
     Book noapte(1879, (char*)"O noapte furtunoasa", (char*)"I.L.Caragiale", 34.89, false);
     Book enigma(1938, (char*)"Enigma Otiliei", (char*)"George Calinescu", 50.00, true);
@@ -24,14 +24,14 @@ int main()
      
     Book b2(enigma);
     b2.display();
-    b1.setName((char*)"Enigma Mihaelei");
+    b2.setName((char*)"Enigma Mihaelei");
     b2.setYear(2023);
     enigma.display();
     b2.display();
     
     Book b3(std::move(morometi));
     b3.display();
-    //morometi.display();
+    morometi.display();
     
     return 0;
 }

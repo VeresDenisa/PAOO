@@ -9,10 +9,9 @@ class Book{
         bool  available;
     public:
         Book(int year, char *name, char *author, float price, bool available);
-        Book();
-        ~Book();
         Book(const Book &b);
         Book(Book &&b);
+        ~Book();
         
         void setYear     (int   year);
         void setName     (char  *name);

@@ -1,35 +1,32 @@
-#include <iostream>
-#include <vector>
-
-using namespace std;
+#pragma once
 
 class Book{
     private:
-        int            ID;
-        int            year;
-        string         name;
-        vector<string> author;
-        float          price;
-        bool           available;
+        int   year;
+        char  name[64];
+        char* author;
+        float price;
+        bool  available;
     public:
-        Book(int ID, int year, string name, vector<string> author, float price, bool available);
+        Book(int year, char *name, char *author, float price, bool available);
         Book();
         ~Book();
-        Book(Book &b);
+        Book(const Book &b);
+        Book(Book &&b);
         
-        void setID       (int            ID);
-        void setYear     (int            year);
-        void setName     (string         name);
-        void setAuthor   (vector<string> author);
-        void setPrice    (float          price);
-        void setAvailable(bool           available);
+        void setYear     (int   year);
+        void setName     (char  *name);
+        void setAuthor   (char  *author);
+        void setPrice    (float price);
+        void setAvailable(bool  available);
         
-        int            getID();
-        int            getYear();
-        string         getName();
-        vector<string> getAuthor();
-        float          getPrice();
-        bool           getAvailable();
+        int   getYear();
+        char* getName();
+        char* getAuthor();
+        float getPrice();
+        bool  getAvailable();
+        
+        void addAuthor(char* author);
         
         void display();
 };

@@ -2,6 +2,7 @@
 
 class Book{
     private:
+        static int bookCount;
         int   ID;
         int   year;
         char  name[64];
@@ -9,8 +10,6 @@ class Book{
         float price;
         bool  available;
     public:
-        static int bookCount;
-    
         Book(int year, char *name, char *author, float price, bool available);
         Book(const Book &b);
         Book(Book &&b);
@@ -22,6 +21,7 @@ class Book{
         void setPrice    (float price);
         void setAvailable(bool  available);
         
+        int   getBookCount();
         int   getYear();
         char* getName();
         char* getAuthor();

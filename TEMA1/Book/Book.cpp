@@ -89,6 +89,9 @@ void Book::display(){
 }
 
 
+int Book::getBookCount(){
+    return bookCount;
+}
 
 int Book::getYear(){
     return year;

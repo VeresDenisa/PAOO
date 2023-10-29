@@ -24,6 +24,7 @@ int main()
      
     Book b2(enigma);
     b2.display();
+    b1.setName((char*)"Enigma Mihaelei");
     b2.setYear(2023);
     enigma.display();
     b2.display();

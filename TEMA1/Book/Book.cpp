@@ -33,14 +33,18 @@ Book::Book(Book &&b){
     this->year      = b.year;
     this->price     = b.price;
     this->available = b.available;   
-    b.author = nullptr;
+    b.author  = nullptr;
+    b.name[0] = '\0';
+    b.year  = 0;
+    b.price = 0.0;
+    b.available = false;
 }
 
 Book::~Book(){
     if(author == nullptr)
-    	cout<<"Destructor called for move!"<<endl;
+    	cout<<"Destructor called for NULL!"<<endl;
     else    
-    	cout<<"Destructor called!"<<endl;
+    	cout<<"Destructor called for "<<name<<"!"<<endl;
     delete[] this->author;
 }
 

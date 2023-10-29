@@ -6,14 +6,18 @@
 using std::cout;
 using std::endl;
 
+int Book::bookCount = 0;
+
 Book::Book(int year, char *name, char *author, float price, bool available){
     cout<<"Constructor called!"<<endl;
     this->author = new char[strlen(author)+1];
     strcpy(this->author, author);
     strcpy(this->name, name);
+    this->ID        = bookCount;
     this->year      = year;
     this->price     = price;
     this->available = available;
+    bookCount++;
 }
 
 Book::Book(const Book &b){
@@ -21,22 +25,26 @@ Book::Book(const Book &b){
     this->author = new char[strlen(b.author)+1];
     strcpy(this->author, b.author);
     strcpy(this->name, b.name);
+    this->ID        = bookCount;
     this->year      = b.year;
     this->price     = b.price;
     this->available = b.available;   
+    bookCount++;
 }
 
 Book::Book(Book &&b){
     cout<<"Move constructor called!"<<endl;
     strcpy(this->name, b.name);
+    this->ID        = b.ID;
     this->author    = b.author;
     this->year      = b.year;
     this->price     = b.price;
     this->available = b.available;   
     b.author  = nullptr;
     b.name[0] = '\0';
-    b.year  = 0;
-    b.price = 0.0;
+    b.ID      = 0;
+    b.year    = 0;
+    b.price   = 0.0;
     b.available = false;
 }
 
@@ -44,8 +52,9 @@ Book::~Book(){
     if(author == nullptr)
     	cout<<"Destructor called for NULL!"<<endl;
     else    
-    	cout<<"Destructor called for "<<name<<"!"<<endl;
+    	cout<<"Destructor called for "<<ID<<". "<<name<<"!"<<endl;
     delete[] this->author;
+    bookCount--;
 }
 
 
@@ -104,7 +113,7 @@ void Book::setAvailable(bool available){
 
 void Book::display(){
     if(author != nullptr){
-        cout<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
+        cout<<ID<<". "<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
         if(available) cout<<" -- AVAILABLE";
         else cout<<" -- UNAVAILABLE";
         cout<<endl;

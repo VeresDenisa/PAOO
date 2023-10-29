@@ -2,12 +2,15 @@
 
 class Book{
     private:
+        int   ID;
         int   year;
         char  name[64];
         char* author;
         float price;
         bool  available;
     public:
+        static int bookCount;
+    
         Book(int year, char *name, char *author, float price, bool available);
         Book(const Book &b);
         Book(Book &&b);

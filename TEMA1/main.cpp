@@ -5,7 +5,7 @@
 int main(int argc, char* argv[])
 {
     Book noapte(1879, (char*)"O noapte furtunoasa", (char*)"I.L.Caragiale", 34.89, false);
-    Book enigma(1938, (char*)"Enigma Otiliei", (char*)"George Calinescu", 50.00, true);
+    Book enigma(Book(1938, (char*)"Enigma Otiliei", (char*)"George Calinescu", 50.00, true));
     Book morometi(1955, (char*)"Morometii", (char*)"Marin Preda", 25.00, true);
     
     noapte.display();

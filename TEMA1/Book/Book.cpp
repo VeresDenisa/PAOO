@@ -10,6 +10,10 @@ int Book::bookCount = 0;
 
 Book::Book(int year, char *name, char *author, float price, bool available){
     cout<<"Constructor called!"<<endl;
+    
+    bookCount++;
+    cout<<"Book count: "<<bookCount<<endl;
+    
     this->author = new char[strlen(author)+1];
     strcpy(this->author, author);
     strcpy(this->name, name);
@@ -17,23 +21,27 @@ Book::Book(int year, char *name, char *author, float price, bool available){
     this->year      = year;
     this->price     = price;
     this->available = available;
-    bookCount++;
 }
 
 Book::Book(const Book &b){
     cout<<"Copy constructor called!"<<endl;
+    
+    bookCount++;
+    cout<<"Book count: "<<bookCount<<endl;
+    
     this->author = new char[strlen(b.author)+1];
     strcpy(this->author, b.author);
     strcpy(this->name, b.name);
     this->ID        = bookCount;
     this->year      = b.year;
     this->price     = b.price;
-    this->available = b.available;   
-    bookCount++;
+    this->available = b.available;
 }
 
 Book::Book(Book &&b){
     cout<<"Move constructor called!"<<endl;
+    cout<<"Book count: "<<bookCount<<endl;
+    
     strcpy(this->name, b.name);
     this->ID        = b.ID;
     this->author    = b.author;
@@ -51,10 +59,12 @@ Book::Book(Book &&b){
 Book::~Book(){
     if(author == nullptr)
     	cout<<"Destructor called for NULL!"<<endl;
-    else    
+    else {
     	cout<<"Destructor called for "<<ID<<". "<<name<<"!"<<endl;
+    	bookCount--;
+    }
+    cout<<"Book count: "<<bookCount<<endl;
     delete[] this->author;
-    bookCount--;
 }
 
 
@@ -65,6 +75,17 @@ void Book::addAuthor(char* author){
     this->author = newAuthor;
     strcat(this->author, (char*)",");
     strcat(this->author, author);
+}
+
+void Book::display(){
+    if(author != nullptr){
+        cout<<ID<<". "<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
+        if(available) cout<<" -- AVAILABLE";
+        else cout<<" -- UNAVAILABLE";
+        cout<<endl;
+    } else {
+        cout<<"UNKNOWN BOOK"<<endl;
+    }   
 }
 
 
@@ -108,16 +129,4 @@ void Book::setPrice(float price){
 
 void Book::setAvailable(bool available){
     this->available = available;
-}
-
-
-void Book::display(){
-    if(author != nullptr){
-        cout<<ID<<". "<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
-        if(available) cout<<" -- AVAILABLE";
-        else cout<<" -- UNAVAILABLE";
-        cout<<endl;
-    } else {
-        cout<<"UNKNOWN BOOK"<<endl;
-    }   
 }

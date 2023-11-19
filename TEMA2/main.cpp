@@ -1,6 +1,7 @@
 #include "E_Book.h"
 #include "Book.h"
 #include "HorrorBook.h"
+#include "SchoolBook.h"
 #include "Manga.h"
 
 #include <iostream>
@@ -9,6 +10,7 @@ using namespace BookNamespace;
 using namespace HorrorBookNamespace;
 using namespace E_BookNamespace;
 using namespace MangaNamespace;
+using namespace SchoolBookNamespace;
 
 int main(int argc, char* argv[])
 {
@@ -45,12 +47,14 @@ int main(int argc, char* argv[])
     noapteS.display();
     
     HorrorBook dracula(1897, (char*)"Dracula", (char*)"Bram Stoker", 'H', (char*)"Violence, Blood");
-    dracula.display();
-    
     Book &draculaS = dracula;
     HorrorBook &dracula2 = dracula;
+    dracula.display();
     dracula2.display();
     draculaS.display();
+    
+    SchoolBook fizica(2012, (char*)"Fizica", (char*)"Anca Udrescu", 11);
+    fizica.display();
     
     std::cout<<"----- Ending -----"<<std::endl;
     

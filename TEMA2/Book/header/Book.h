@@ -39,6 +39,8 @@ class Book : public E_BookNamespace::E_Book{
 
         virtual float getPrice() override;
         virtual void display() override;
+        
+        void displaySummary();
 };
 
 }

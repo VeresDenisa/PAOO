@@ -127,6 +127,14 @@ void Book::display(){
     }   
 }
 
+void Book::displaySummary(){
+    if(author != nullptr){
+        cout<<ID<<". "<<name<<endl;
+    } else {
+        cout<<"UNKNOWN BOOK"<<endl;
+    }   
+}
+
 
 int Book::getBookCount(){
     return bookCount;

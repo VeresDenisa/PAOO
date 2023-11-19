@@ -16,9 +16,17 @@ HorrorBook::HorrorBook(int year, char *name, char *author, char rating, char *wa
 
 void HorrorBook::display(){
     Book::display();
-    
     std::cout<<"Rating: "<<this->rating<<std::endl;
 }
+
+void HorrorBook::displaySummary(){
+    std::cout<<"Rating: "<<this->rating<<std::endl;
+}
+
+float HorrorBook::getPrice(){
+    return 75.00;
+}
+
 void HorrorBook::displayWarnings(){
     std::cout<<"Warnings: "<<this->warning<<std::endl;
 }

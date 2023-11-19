@@ -11,7 +11,7 @@ class HorrorBook : public BookNamespace::Book{
         HorrorBook(int year, char *name, char *author, char rating, char *warning);
         
         void display() override;
-        void displayWarning();
+        void displayWarnings();
 };
 
 }

@@ -3,14 +3,10 @@
 #include <iostream>
 #include <cstring>
 
-using std::cout;
-using std::endl;
-
 using namespace MangaNamespace;
 
-
 Manga::Manga(int noPages){
-    cout<<"Constructor called! A manga has been created."<<endl;
+    std::cout<<"Constructor called! A manga has been created."<<std::endl;
     
     this->noPages   = 0;
     this->isPrinted = 0;
@@ -18,10 +14,7 @@ Manga::Manga(int noPages){
 
 
 float Manga::getPrice(){
-    float price = 100.00;
-    if(this->noPages > 20) price = 40.00;
-    else price = 20.00;
-    return price;
+    return (this->noPages > 20)?40.00:20.00;
 }
 
 void Manga::getPrinted(){
@@ -34,9 +27,9 @@ void Manga::getOnline(){
 
 void Manga::display(){
     if(isPrinted){
-        cout<<"There is a printed manga being displayed. It has "<<this->noPages<<" pages."<<endl;
+        std::cout<<"There is a printed manga being displayed. It has "<<this->noPages<<" pages."<<std::endl;
     } else {
-        cout<<"There is an online manga being displayed. It has "<<this->noPages<<" pages."<<endl;
+        std::cout<<"There is an online manga being displayed. It has "<<this->noPages<<" pages."<<std::endl;
     }   
 }
 

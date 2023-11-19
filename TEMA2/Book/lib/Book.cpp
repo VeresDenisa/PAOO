@@ -121,10 +121,7 @@ void Book::getOnline(){
 
 void Book::display(){
     if(author != nullptr){
-        cout<<ID<<". "<<name<<" de "<<author<<" in "<< year<<" -> "<<price<<" RON";
-        if(available) cout<<" -- AVAILABLE";
-        else cout<<" -- UNAVAILABLE";
-        cout<<endl;
+        cout<<ID<<". "<<name<<" de "<<author<<" in "<< year<<endl;
     } else {
         cout<<"UNKNOWN BOOK"<<endl;
     }   

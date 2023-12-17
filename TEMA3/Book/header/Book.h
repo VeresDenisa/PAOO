@@ -1,19 +1,16 @@
 #pragma once
-#include "E_Book.h"
+#include "Library.h"
+#include <memory>
 
-namespace BookNamespace{
+class Library;
 
-class Book : public E_BookNamespace::E_Book{
+class Book{
     private:
-        static int bookCount;
-        int   ID;
-        int   year;
-        char  name[64];
-        char* author;
-    protected:
-        int isPrinted;
+        char name[64];
     public:
-        Book(int year, char *name, char *author);
+        std::shared_ptr<Library> l;
+        
+        Book(char *name);
         Book();
         ~Book();
         
@@ -23,24 +20,8 @@ class Book : public E_BookNamespace::E_Book{
         Book& operator=(const Book &b);
         Book& operator=(Book &&b);
         
-        void setYear     (int   year);
-        void setName     (char  *name);
-        void setAuthor   (char  *author);
-        
-        int   getBookCount();
-        int   getYear();
-        char* getName();
-        char* getAuthor();
-        
-        void addAuthor(char* author);
-        
-        virtual void getPrinted() override;
-        virtual void getOnline() override;
-
-        virtual float getPrice() override;
-        virtual void display() override;
-        
-        void displaySummary();
+        void setName(char *name);   
+       
+        void display();
 };
 
-}

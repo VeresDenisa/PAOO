@@ -5,6 +5,7 @@
 #include <cstring>
 #include <mutex>
 #include <unistd.h>
+#include <thread>
 
 using std::cout;
 using std::endl;
@@ -14,8 +15,10 @@ std::mutex libraryMutex;
 void* Library::task(void* book){
     libraryMutex.lock();
     
-    usleep(rand()%1000000);
-    cout<<(char*)book<<endl;
+    cout<<"Customer no "<<std::this_thread::get_id()<<" enters the library and  requests  book "<<(char*)book<<endl;
+    int time = rand()%1000000;
+    usleep(time);
+    cout<<"Customer no "<<std::this_thread::get_id()<<" exits  the library after "<<time<<"ms with book "<<(char*)book<<endl;
     
     libraryMutex.unlock();
     return NULL;
@@ -28,12 +31,12 @@ void Library::requestBook(char* bookName){
 }
 
 Library::Library(char *name){
-    cout<<"Constructor called!"<<endl;
+    cout<<"Library constructor called!"<<endl;
     strcpy(this->name, name);
 }
 
 Library::~Library(){
-    cout<<"Destructor called"<<endl;
+    cout<<"Library destructor called"<<endl;
 }
 
 Library::Library(){}

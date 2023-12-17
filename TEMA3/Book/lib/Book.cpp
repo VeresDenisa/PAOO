@@ -8,7 +8,7 @@ using std::cout;
 using std::endl;
 
 Book::Book(char *name){
-    cout<<"Constructor called!"<<endl;
+    cout<<"Book constructor called!"<<endl;
     strcpy(this->name, name);
 }
 
@@ -23,7 +23,7 @@ Book::Book(Book &&b){
 }
 
 Book::~Book(){
-    cout<<"Destructor called"<<endl;
+    cout<<"Book destructor called"<<endl;
 }
 
 Book::Book(){}
@@ -42,7 +42,7 @@ Book& Book::operator=(Book &&b){
 
 
 void Book::display(){
-    cout<<name<<endl;
+    cout<<"Cartea "<<name<<endl;
 }
 
 void Book::setName(char* name){

@@ -12,7 +12,8 @@ class Library{
         
         static void* task(void* book);
     public:
-        std::unique_ptr<Book> b;
+        std::weak_ptr<Book> hate;
+        std::weak_ptr<Book> love;
         
         void requestBook(char* bookName);
         

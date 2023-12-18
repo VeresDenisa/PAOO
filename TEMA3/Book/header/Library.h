@@ -1,12 +1,11 @@
 #pragma once
 #include "Book.h"
 #include <memory>
+#include <mutex>
 
 class Book;
 
-void goToLibrary(int id);
-
-class Library{
+class Library{    
     private:
         char name[100];
         

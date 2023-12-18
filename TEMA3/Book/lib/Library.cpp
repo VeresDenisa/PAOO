@@ -11,16 +11,19 @@ using std::cout;
 using std::endl;
 
 std::mutex libraryMutex;
+std::mutex mutex2;
 
 void* Library::task(void* book){
-    libraryMutex.lock();
-    
+    mutex2.lock();
     cout<<"Customer no "<<std::this_thread::get_id()<<" enters the library and  requests  book "<<(char*)book<<endl;
     int time = rand()%1000000;
-    usleep(time);
+    usleep(time/2);
+    mutex2.unlock();
+    
+    std::lock_guard<std::mutex> lock_guard(libraryMutex);
+    usleep(time/2);
     cout<<"Customer no "<<std::this_thread::get_id()<<" exits  the library after "<<time<<"ms with book "<<(char*)book<<endl;
     
-    libraryMutex.unlock();
     return NULL;
 }
 
